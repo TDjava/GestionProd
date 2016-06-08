@@ -7,7 +7,6 @@ package ihm_gestionproduit;
  */
 import java.applet.AudioClip;
 import java.awt.*;
-import javax.swing.*;
 import javax.swing.table.*;
 
 
@@ -23,12 +22,14 @@ public class GestionProduit extends javax.swing.JFrame {
         son1.setVisible(false);
         son2.setVisible(false);
         
+        
+        
     }
     
   
 
 
-    @SuppressWarnings("unchecked")
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -238,15 +239,17 @@ public class GestionProduit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Prix_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Prix_textActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_Prix_textActionPerformed
 
     private void Libelle_textActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Libelle_textActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Libelle_textActionPerformed
+          }//GEN-LAST:event_Libelle_textActionPerformed
 
     private void jComboBoxCatégoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCatégoriesActionPerformed
        
+       jLabel_messRed.setVisible(false);
+
+
        if (jComboBoxCatégories.getSelectedItem().equals("Casque audio")) {
            
         son1.setVisible(true);
@@ -263,7 +266,8 @@ public class GestionProduit extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBoxCatégoriesActionPerformed
 
     private void Button_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ajouterActionPerformed
-           
+      
+       
         DefaultTableModel modele = (DefaultTableModel) jTable.getModel();
         
         if(!Libelle_text.getText().equals(""))
@@ -271,19 +275,21 @@ public class GestionProduit extends javax.swing.JFrame {
             try
             {
             modele.addRow(new Object [] {Libelle_text.getText().trim(), jComboBoxCatégories.getSelectedItem().toString(),Double.parseDouble(Prix_text.getText())});
-
+            jLabel_messRed.setVisible(false);
             } catch (Exception e){
                 if ( e.getMessage().equals("empty String"))
                         jLabel_messRed.setText( "Erreur : le prix unitaire n'est pas précisé." );
                                  }
            
         }else jLabel_messRed.setText( "Erreur : le Libellé n'est pas précisé." );
+       
             
             
     
     }//GEN-LAST:event_Button_ajouterActionPerformed
 
     private void Button_modifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_modifActionPerformed
+               
             jLabel_messRed.setVisible(false);
             
             if (jTable.getRowCount()==0){           
@@ -325,12 +331,13 @@ public class GestionProduit extends javax.swing.JFrame {
     }//GEN-LAST:event_Button_modifActionPerformed
 
     private void Button_SupprActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_SupprActionPerformed
-                    effacer();
+                   
+        effacer();
     }//GEN-LAST:event_Button_SupprActionPerformed
 
     private void son2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_son2ActionPerformed
        
-
+      
         
         java.net.URL url1 = GestionProduit.class.getResource("/Sons/evacuer.wav");
         Son2 = java.applet.Applet.newAudioClip(url1);
@@ -339,6 +346,7 @@ public class GestionProduit extends javax.swing.JFrame {
     }//GEN-LAST:event_son2ActionPerformed
 
     private void son1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_son1ActionPerformed
+        
         
         java.net.URL url1 = GestionProduit.class.getResource("/Sons/prems.wav");
         Son1 = java.applet.Applet.newAudioClip(url1);
