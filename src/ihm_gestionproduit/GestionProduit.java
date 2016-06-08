@@ -20,6 +20,9 @@ public class GestionProduit extends javax.swing.JFrame {
     
     public GestionProduit() {
         initComponents();
+        son1.setVisible(false);
+        son2.setVisible(false);
+        
     }
     
   
@@ -182,14 +185,14 @@ public class GestionProduit extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable);
 
-        son1.setText("Test son1");
+        son1.setText("Test son 1");
         son1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 son1ActionPerformed(evt);
             }
         });
 
-        son2.setText("Test son2");
+        son2.setText("Test son 2");
         son2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 son2ActionPerformed(evt);
@@ -243,7 +246,20 @@ public class GestionProduit extends javax.swing.JFrame {
     }//GEN-LAST:event_Libelle_textActionPerformed
 
     private void jComboBoxCatégoriesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxCatégoriesActionPerformed
-        // TODO add your handling code here:
+       
+       if (jComboBoxCatégories.getSelectedItem().equals("Casque audio")) {
+           
+        son1.setVisible(true);
+        son2.setVisible(true);
+       }
+       else
+       {
+        son1.setVisible(false);
+        son2.setVisible(false);
+       }
+        
+    
+       
     }//GEN-LAST:event_jComboBoxCatégoriesActionPerformed
 
     private void Button_ajouterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button_ajouterActionPerformed
@@ -293,7 +309,7 @@ public class GestionProduit extends javax.swing.JFrame {
             }
             
             
-                    else {
+            else {
                 Double px = Double.parseDouble(Prix_text.getText());
                 jTable.setValueAt(libel,jTable.getSelectedRow(),0);
                 jTable.setValueAt(cat,jTable.getSelectedRow(),1);
@@ -314,6 +330,8 @@ public class GestionProduit extends javax.swing.JFrame {
 
     private void son2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_son2ActionPerformed
        
+
+        
         java.net.URL url1 = GestionProduit.class.getResource("/Sons/evacuer.wav");
         Son2 = java.applet.Applet.newAudioClip(url1);
         Son2.play() ;
@@ -387,9 +405,7 @@ public class GestionProduit extends javax.swing.JFrame {
      
     
     
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
